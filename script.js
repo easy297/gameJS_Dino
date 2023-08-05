@@ -1,10 +1,11 @@
-const dino = document.getElementById("dino")
-const cactus = document.getElementById("cactus")
+const dino = document.getElementById("dino");
+const cactus = document.getElementById("cactus");
+
 const gameStart = document.querySelector(".game-start");
-
-
-let score = 0;
+// console.log(gameStart);
 const scoreDisplay = document.getElementById("score");
+// console.log(scoreDisplay);
+let score = 0;
 
 
 document.addEventListener("keydown", function(event) {
@@ -29,11 +30,16 @@ let isAlive = setInterval ( function() {
     
 
     if(cactusLeft < 50 && cactusLeft > 0 && dinoTop >= 140) {
+        // alert("GAME OVER");
         gameStart.classList.add("game-over");
         score = 0;
         scoreDisplay.textContent = score;
-        if(confirm("GAMEOVER, start again?") == true) {
+        dino.classList.add("dino-vanish");
+        cactus.classList.add("cactus-vanish");
+        if(confirm("GAME OVER, start again?") == true) {
             gameStart.classList.remove("game-over");
+            dino.classList.remove("dino-vanish");
+            cactus.classList.remove("cactus-vanish");
         }
     }
 }, 10);
